@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIESGSTportal</title>
+    <link rel="stylesheet" href="/css/admin-css/add-event-admin.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script defer src="/javascripts/fileUpload.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+        
+      <!--------------------- TOP-NAV ---------------------->
+
+       <div class="top-nav">
+      <h1>SIESGSTportal<span>.</span></h1>
+      <i class="material-icons menu">menu</i>
+      <form action="/signout?_method=DELETE" method="POST" class="form" >
+        <button class="button" type="submit">LOG OUT</button>
+      </form>
+    </div>
+
+      <!--------------------- SIDE-NAV ---------------------->
+
+      <div class="position">
+        <div class="side-nav open">
+          <div class="user-info">
+            <img src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg" alt="Avatar" class="avatar" />
+            <h3>Admin</h3>
+          </div>
+  
+          <ul>
+         
+            <li class="border">
+              <i class="material-icons">event</i>
+              <a href="/admin/event">Event<span class="fas fa-caret-down before "></span></a>
+           
+              <ul>
+                
+                <li class="inner" >  <i class="material-icons">create</i><a href="/admin/event/add">Create Event</a></li>
+              </ul>
+            </li>
+     
+            <li class="border"><i class="material-icons">recent_actors</i><a href="/admin/story">Stories</a></li>
+            <form action="/signout?_method=DELETE" class="border s-hidden" method="POST">
+              <i class="material-icons">east</i><button class="log" type="submit">Log Out</button>
+            </form>
+          </ul>
+        </div>
+      </div>
+      <!--------------------- RIGHT-SECTION ---------------------->
+
+      
+             <div class="container-one">
+        
+
+        <p class="line">CREATE EVENT</p>
+        <form action="/admin/event" method="POST">
+    <div class="card-body">
+
+        <div class="name-flex">
+            <div class="event-name right">
+                <p class="name">Event Name</p>
+                <input type="text" class="i-name" placeholder="Enter name of event" id="name"  name="name" required value="<%= event.name %>">
+            </div>
+
+            <div class="event-name left">
+                <p class="name">Event Date</p>
+                <input type="date" class="i-name"  id="date"  name="date" required value="<%= event.date %>">
+            </div>
+
+            <div class="event-name third">
+              <p class="name">Category</p>
+              <select name="category" id="category" class="i-name" >
+                <option value="recent">Recent Event</option>
+                <option value="upcoming">Upcoming Event</option>
+              </select>
+          </div>
+        </div>    
+
+        <div class="event-name">
+            <p class="name">Description</p>
+            <textarea type="text" class="i-name desc" placeholder="Enter name of event"  id="description"  name="description" ><%=event.description%></textarea>
+        </div>
+        <div>
+          <label>Cover</label>
+          <input type="file" name="cover" class="filepond">
+        </div>
+
+        <div><input type="submit" name="" value="SUBMIT" class="s-button"></div>
+
+    </div>
+</form>
+
+
+             </div>
+
+      
+    </div> <!--/Container-->
+
+    <script>
+      const burger = document.querySelector(".top-nav i");
+const side = document.querySelector(".side-nav");
+
+burger.addEventListener("click", (e) => {
+  side.classList.toggle("open");
+  e.preventDefault();
+});
+
+const add = document.querySelector(".inner");
+const before = document.querySelector(".before");
+
+
+before.addEventListener("click", (e) => {
+add.classList.toggle("add")
+before.classList.toggle("after")
+
+e.preventDefault();
+});
+
+    </script>
+  </body>
+</html>

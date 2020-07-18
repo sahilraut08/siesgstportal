@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/homapage.css">
+    <title>SIESGSTportal</title>
+</head>
+<body>
+
+
+
+<!--**************************  Hero Section  **************************-->
+
+<div class="hero">
+        <div class="container">
+    
+            <nav class="top-nav">
+                <h1>SIESGSTportal<span>.</span></h1>
+                <ul class="menu">
+                    <li>Covid-19</li>
+                </ul>
+              </nav>
+      
+    
+
+    <div class="hero-section">
+        <h1 class="hero-title">Welcome to <br>SIESGST Portal</h1>
+        <p class="hero-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis architecto iusto cupiditate consequatur aliquid facilis aut doloribus, natus velit excepturi iste rerum dolorum iure nihil esse itaque tenetur.</p>
+        <div class="buttons">
+            <a href="/signup" class="button-1">SIGN UP</a>
+            <a href="/signin" class="button-2">SIGN IN</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--**************************  Cards Section  **************************-->
+
+<div class="second">
+
+    <div class="container">
+        <h3 class="second-title">RECENT EVENTS</h3>
+        <div class="cards">
+
+            <% event.forEach(event => { %>
+                    <figure class="card-item">
+                        
+                            <img src="<%= event.coverImagePath %>" alt="portfolio" class="card-photo">
+                       
+                        <figcaption class="card-desc">
+                            <a href="/signin"><p class="card-title"><%= event.name %></p></a>
+                            <p class="card-date"><%= event.date.toDateString() %></p>   
+                        </figcaption>
+                    </figure>
+
+                    <% }) %>
+        </div>
+<!-- <div class="see-more">
+        <a href="#" class="button-1">SEE MORE</a>
+    </div> -->
+
+    </div>
+
+</div>
+
+
+<!--**************************  Footer  **************************-->
+
+<div class="footer">
+<div class="container">
+    <div class="footer-section">
+        <p class="logo f-logo">SIESGSTportal<span>.</span></p>
+        <p class="copyright">@Copyright2020</p>
+        <p class="develop">Developed by Emaad & Sahil</p>
+    </div>
+</div>
+</div>
+
+
+
+
+
+<script>
+    window.addEventListener('scroll', function () {
+        let header = document.querySelector('nav');
+        let windowPosition = window.scrollY > 0;
+        header.classList.toggle('scrolling-active', windowPosition);
+    })
+</script>
+
+
+</body>
+</html>

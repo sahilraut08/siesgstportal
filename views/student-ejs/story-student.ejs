@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIESGSTportal</title>
+    <link rel="stylesheet" href="/css/student-css/story-student.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+        
+      <!--------------------- TOP-NAV ---------------------->
+
+      <div class="top-nav">
+        <h1>SIESGSTportal<span>.</span></h1>
+        <i class="material-icons menu">menu</i>
+        <form action="/signout?_method=DELETE" method="POST" class="form" >
+          <button class="button" type="submit">LOG OUT</button>
+        </form>
+      </div>
+
+      <!--------------------- SIDE-NAV ---------------------->
+
+     
+      <div class="position">
+        <div class="side-nav open">
+          <div class="user-info">
+            <img
+              src="/img/cesar-rincon-XHVpWcr5grQ-unsplash.jpg"
+              alt="Avatar"
+              class="avatar"
+            />
+            <h3><%= user %></h3>
+          </div>
+
+          <ul>
+            <li class="border">
+                <i class="material-icons">event</i>
+                <a href="/student/event">Event</a>
+              </li>
+
+            <li class="border">
+              <i class="material-icons">recent_actors</i>
+              <a href="/student/story">Story<span class="fas fa-caret-down before "></span></a>
+              <ul>
+                 <div class="inner" >
+                <li id="i-top">  <i class="material-icons">person</i><a href="/student/story/mystory">My Story</a></li>
+                <li >  <i class="material-icons">create</i><a href="/student/story/add">Create Story</a></li>
+              </div>
+              </ul>
+            </li>
+            <form action="/signout?_method=DELETE" class="border s-hidden" method="POST">
+              <i class="material-icons">east</i><button class="log" type="submit">Log Out</button>
+            </form>
+          </ul>
+        </div>
+      </div>
+   
+      <!--------------------- RIGHT-SECTION ---------------------->
+
+      
+        <div class="container-one">
+        
+            <p class="line heading">QUARANTINE STORIES</p>
+            <% story.forEach(story => { %>
+                <div class="story">
+                    <div class="story-content">
+                        <p class="title"><%= story.name %></p>
+                        <img class="image-in" src="<%= story.coverImagePath %>">
+                            <div class="box">
+                                <div class="lc">
+                                    <p class=""><i class="material-icons">favorite_border</i> Like</p>
+                                    <p class="lc-content"><i class="material-icons">insert_comment</i> Comment</p>
+                                </div>
+                                <p class="desc"><%= story.description %> ....<span class="read">more</span></p>
+                            </div>  
+                    </div>
+                </div>
+                <% }) %>
+         
+        </div>
+
+      
+    </div>
+
+   
+    <script>
+      const burger = document.querySelector(".top-nav i");
+const side = document.querySelector(".side-nav");
+
+burger.addEventListener("click", (e) => {
+  side.classList.toggle("open");
+  e.preventDefault();
+});
+const add = document.querySelector(".inner");
+const before = document.querySelector(".before");
+
+
+before.addEventListener("click", (e) => {
+add.classList.toggle("add")
+before.classList.toggle("after")
+
+e.preventDefault();
+});
+
+    </script>
+  </body>
+</html>
